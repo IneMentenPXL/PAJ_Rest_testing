@@ -11,13 +11,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 class LoadDatabase {
 
-  private static final Logger LOGGER = LogManager.getLogger(LoadDatabase.class);
- // Spring Boot will run ALL CommandLineRunner beans once the application context is loaded.
-  @Bean
-  public CommandLineRunner initDatabase(EmployeeRepository repository) {
-    return args -> {
-      LOGGER.info("Preloading " + repository.save(new Employee("Bilbo Baggins", "burglar")));
-      LOGGER.info("Preloading " + repository.save(new Employee("Frodo Baggins", "thief")));
-    };
-  }
+    private static final Logger LOGGER = LogManager.getLogger(LoadDatabase.class);
+
+    // Spring Boot will run ALL CommandLineRunner beans once the application context is loaded.
+    @Bean
+    public CommandLineRunner initDatabase(EmployeeRepository repository) {
+        return args -> {
+            LOGGER.info("Preloading " + repository.save(new Employee("Bilbo Baggins", "burglar")));
+            LOGGER.info("Preloading " + repository.save(new Employee("Frodo Baggins", "thief")));
+        };
+    }
 }
